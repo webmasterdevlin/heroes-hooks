@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import NewItemForm from "../../shared/components/NewItemForm";
-import { getHeroes } from "../hero-service";
+import { addHero, getHeroes, removeHero } from "../hero-service";
 import { Link } from "react-router-dom";
 
 export default function Heroes() {
@@ -14,7 +14,7 @@ export default function Heroes() {
     }
   });
   const [heroes, setHeroes] = useState([hero]);
-  const [isShowNewItem, setIsShowNewItem] = useState(false);
+  const [isShowNewItemForm, setIsShowNewItemForm] = useState(false);
 
   useEffect(() => {
     onLoadData();
@@ -27,9 +27,51 @@ export default function Heroes() {
     setHeroes(data);
     console.log("setHeroes: ", heroes);
   };
+
+  const showNewItemForm = () => {
+    setIsShowNewItemForm(!isShowNewItemForm);
+  };
+  const onChange = ({ currentTarget: input }) => {
+    const newHero = { ...hero };
+    const { name, value } = input;
+    newHero[name] = value;
+    setHero(newHero);
+  };
+
+  const onSubmit = async event => {
+    event.preventDefault();
+    try {
+      const { data: addedHero } = await addHero(hero);
+      const newSetOfHeroes = [...heroes, addedHero];
+      setHeroes(newSetOfHeroes);
+      setIsShowNewItemForm(!isShowNewItemForm);
+    } catch (e) {
+      alert(e.message);
+      throw e;
+    }
+  };
+
+  const removeItem = async (id, name) => {
+    const isConfirmed = window.confirm(`Delete ${name}?`);
+    if (!isConfirmed) return;
+
+    try {
+      await removeHero(id);
+      const newSetOfHeroes = heroes.filter(hero => hero.id !== id);
+      setHeroes(newSetOfHeroes);
+    } catch (e) {
+      alert(e.message);
+      throw e;
+    }
+  };
   return (
     <>
-      <NewItemForm />
+      <NewItemForm
+        isShowNewItemForm={isShowNewItemForm}
+        handleOnChange={onChange}
+        handleOnSubmit={onSubmit}
+        handleShowNewItemForm={showNewItemForm}
+      />
       {heroes.map(item => (
         <div key={item.id} className="card mt-3" style={{ width: "auto" }}>
           <div className="card-header">
@@ -42,7 +84,7 @@ export default function Heroes() {
           <section className="card-body">
             <div className="row">
               <button
-                onClick={() => this.removeItem(item.id, item.firstName)}
+                onClick={() => removeItem(item.id, item.firstName)}
                 className="btn btn-outline-danger card-link col text-center"
               >
                 <span className="fas fa-eraser  mr-2" />
