@@ -1,20 +1,6 @@
 {
   "heroes": [
     {
-      "id": "1D991F17-2F7F-D114-9452-F30801B5F18E",
-      "firstName": "Colin",
-      "lastName": "Bradford",
-      "house": "Gibraltar",
-      "knownAs": "Egestas Fusce Aliquet Corporation"
-    },
-    {
-      "id": "D286D700-52C2-F159-5A91-5F3E84C306BA",
-      "firstName": "Audra",
-      "lastName": "Serrano",
-      "house": "Mexico",
-      "knownAs": "Dolor Sit Consulting"
-    },
-    {
       "id": "408EEED5-1310-9C6C-104B-3AE2CC9D826B",
       "firstName": "Leilani",
       "lastName": "Conley",
@@ -674,34 +660,6 @@
     }
   ],
   "villains": [
-    {
-      "id": "1D991F17-2F7F-D114-9452-F30801B5F18E",
-      "firstName": "Colin",
-      "lastName": "Bradford",
-      "house": "Gibraltar",
-      "knownAs": "Egestas Fusce Aliquet Corporation"
-    },
-    {
-      "id": "D286D700-52C2-F159-5A91-5F3E84C306BA",
-      "firstName": "Audra",
-      "lastName": "Serrano",
-      "house": "Mexico",
-      "knownAs": "Dolor Sit Consulting"
-    },
-    {
-      "id": "408EEED5-1310-9C6C-104B-3AE2CC9D826B",
-      "firstName": "Leilani",
-      "lastName": "Conley",
-      "house": "Spain",
-      "knownAs": "Ornare Industries"
-    },
-    {
-      "id": "9D3809F9-5245-4C71-12BB-2940D6F45329",
-      "firstName": "Rashad",
-      "lastName": "Gibson",
-      "house": "Puerto Rico",
-      "knownAs": "Amet Risus LLC"
-    },
     {
       "id": "1BA234A3-E164-E67F-3AC0-C566F45AD141",
       "firstName": "Silas",

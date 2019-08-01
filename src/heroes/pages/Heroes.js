@@ -22,10 +22,7 @@ export default function Heroes() {
 
   const onLoadData = async () => {
     const { data } = await getHeroes();
-    console.table(data);
-    const newHereos = [...heroes, data];
     setHeroes(data);
-    console.log("setHeroes: ", heroes);
   };
 
   const showNewItemForm = () => {
